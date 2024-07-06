@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedDownItem : ItemManager
+public class RecoveryItem : ItemManager
 {
-    [SerializeField] float _speedDown;
+    [SerializeField] float _recovery;
     public override void Activate()
     {
-        FindObjectOfType<PlayerManager>().Move(-_speedDown);
+        FindObjectOfType<PlayerManager>().Life(_recovery);
     }
     // Start is called before the first frame update
     void Start()
