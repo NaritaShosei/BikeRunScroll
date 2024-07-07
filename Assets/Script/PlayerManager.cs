@@ -21,9 +21,11 @@ public class PlayerManager : MonoBehaviour
     {
         Move(0);
         Jump();
-        Life(0);
+        Recovery(0);
+        Debug.Log($"life{_life}");
+        Debug.Log($"Speed{_moveSpeed}");
     }
-    
+
 
     public void Move(float speed)
     {
@@ -37,12 +39,17 @@ public class PlayerManager : MonoBehaviour
             _rb2d.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
         }
     }
-    public void Life(float life)
+    public void Recovery(float recovery)
     {
-        if (_maxLife >= _life)
+        if (_maxLife > _life)
         {
-            _life += life;
+            _life += recovery;
         }
+    }
+
+    public void Damage(float damage)
+    { 
+            _life -= damage;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -7,7 +7,7 @@ public class RecoveryItem : ItemManager
     [SerializeField] float _recovery;
     public override void Activate()
     {
-        FindObjectOfType<PlayerManager>().Life(_recovery);
+        FindObjectOfType<PlayerManager>().Recovery(_recovery);
     }
     // Start is called before the first frame update
     void Start()
