@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
         Move(0);
         Jump();
         Recovery(0);
+        Damage(0);
     }
 
 
