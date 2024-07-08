@@ -6,25 +6,30 @@ public class ItemGenerator : MonoBehaviour
 {
     [SerializeField] Vector2 _spawnPos;
     [SerializeField] float[] _randomPosY;
-    int _randomIndex;
+    [SerializeField] GameObject[] _randomItem; 
+    int _randomSpawnIndex;
+    int _randomItemIndex;
     // Start is called before the first frame update
     void Start()
     {
-        _randomPosY[0] = -3.5f;
-        _randomPosY[1] = -0.6f;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) { 
         Spawn();
-        Debug.LogWarning(_randomIndex);
+        Debug.LogWarning(_randomSpawnIndex);
+        }
     }
 
     void Spawn()
     {
-        _randomIndex = Random.Range(0, _randomPosY.Length);
+        _randomSpawnIndex = Random.Range(0, _randomPosY.Length);
         _spawnPos.x = transform.position.x;
-        _spawnPos.y = _randomPosY[_randomIndex];
+        _spawnPos.y = _randomPosY[_randomSpawnIndex];
+        _randomItemIndex = Random.Range(0,_randomItem.Length);
+        Instantiate(_randomItem[_randomItemIndex],_spawnPos,Quaternion.identity);
     }
 }
