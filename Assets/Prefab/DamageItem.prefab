@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5407528904665877282}
   - component: {fileID: 7107120631266354578}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: DamageItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

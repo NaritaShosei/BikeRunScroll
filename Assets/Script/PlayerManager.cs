@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] float _moveSpeed;
+    [SerializeField] float _maxSpeed;
     [SerializeField] float _jumpPower;
     Rigidbody2D _rb2d;
     bool _isGround;
@@ -22,8 +23,6 @@ public class PlayerManager : MonoBehaviour
         Move(0);
         Jump();
         Recovery(0);
-        Debug.Log($"life{_life}");
-        Debug.Log($"Speed{_moveSpeed}");
     }
 
 
@@ -31,6 +30,14 @@ public class PlayerManager : MonoBehaviour
     {
         _moveSpeed += speed;
         transform.position += transform.right * _moveSpeed  * Time.deltaTime;
+        if (_moveSpeed <= 1)
+        {
+            _moveSpeed = 1;
+        }
+        if (_moveSpeed >= _maxSpeed)
+        {
+            _moveSpeed = _maxSpeed;
+        }
     }
     void Jump()
     {
@@ -50,13 +57,16 @@ public class PlayerManager : MonoBehaviour
     public void Damage(float damage)
     { 
             _life -= damage;
+        if (_life <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
             _isGround = true;
-            Debug.Log(_isGround);
         }
     }
     private void OnCollisionExit2D(Collision2D collision)

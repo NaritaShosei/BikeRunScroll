@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2016173837091857557}
   - component: {fileID: 1407323749369435374}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: RecoveryItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
