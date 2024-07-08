@@ -29,15 +29,18 @@ public class ItemGenerator : MonoBehaviour
     void Spawn()
     {
         _timer += Time.deltaTime;
-        if (_randomIntervalPlayerTransform <= _playerTransform.position.x && _timer >= _intervalTime)
+        if (_playerTransform != null)
         {
-            _randomSpawnIndex = Random.Range(0, _randomPosY.Length);
-            _spawnPos.x = transform.position.x;
-            _spawnPos.y = _randomPosY[_randomSpawnIndex];
-            _randomItemIndex = Random.Range(0, _randomItem.Length);
-            Instantiate(_randomItem[_randomItemIndex], _spawnPos, Quaternion.identity);
-            _randomIntervalPlayerTransform += 5;
-            _timer = 0;
+            if (_randomIntervalPlayerTransform <= _playerTransform.position.x && _timer >= _intervalTime)
+            {
+                _randomSpawnIndex = Random.Range(0, _randomPosY.Length);
+                _spawnPos.x = transform.position.x;
+                _spawnPos.y = _randomPosY[_randomSpawnIndex];
+                _randomItemIndex = Random.Range(0, _randomItem.Length);
+                Instantiate(_randomItem[_randomItemIndex], _spawnPos, Quaternion.identity);
+                _randomIntervalPlayerTransform += 5;
+                _timer = 0;
+            }
         }
     }
 }
