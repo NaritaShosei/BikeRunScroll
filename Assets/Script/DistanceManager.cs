@@ -14,7 +14,7 @@ public class DistanceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,8 +26,8 @@ public class DistanceManager : MonoBehaviour
     {
         if (_playerObject != null)
         {
-        _distance = Vector2.Distance(_playerObject.transform.position, _goalObject.transform.position);
-        _distanceText.text = $"{ _distance.ToString("F1")}m";
+            _distance = Vector2.Distance(_playerObject.transform.position, _goalObject.transform.position);
+            _distanceText.text = $"ÉSÅ[ÉãÇ‹Ç≈Ç†Ç∆{_distance.ToString("F1")}m";
         }
     }
 }
