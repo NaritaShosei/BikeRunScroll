@@ -31,9 +31,9 @@ public class PlayerManager : MonoBehaviour
     {
         _moveSpeed += speed;
         transform.position += transform.right * _moveSpeed  * Time.deltaTime;
-        if (_moveSpeed <= 1)
+        if (_moveSpeed <= 0)
         {
-            _moveSpeed = 1;
+            Destroy(gameObject);
         }
         if (_moveSpeed >= _maxSpeed)
         {
@@ -45,6 +45,10 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _isGround)
         {
             _rb2d.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && !_isGround)
+        {
+            _rb2d.AddForce(Vector2.down * _jumpPower, ForceMode2D.Impulse);
         }
     }
     public void Recovery(float recovery)
