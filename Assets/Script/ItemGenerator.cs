@@ -23,7 +23,6 @@ public class ItemGenerator : MonoBehaviour
     void Update()
     {
         Spawn();
-        Debug.Log(_timer);
     }
 
     void Spawn()
