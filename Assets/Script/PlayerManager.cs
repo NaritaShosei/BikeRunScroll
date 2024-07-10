@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     bool _isGround;
     [SerializeField] float _maxLife;
     [SerializeField] float _life;
+    int _count;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,9 +47,10 @@ public class PlayerManager : MonoBehaviour
         {
             _rb2d.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
         }
-        if (Input.GetKeyDown(KeyCode.Return) && !_isGround)
+        if (Input.GetKeyDown(KeyCode.Return) && _count < 1)
         {
             _rb2d.AddForce(Vector2.down * _jumpPower, ForceMode2D.Impulse);
+            _count++;
         }
     }
     public void Recovery(float recovery)
@@ -78,6 +80,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            _count = 0;
             _isGround = false;
         }
     }
