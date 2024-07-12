@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] float _moveSpeed;
+    public float _speed;
     [SerializeField] float _maxSpeed;
     [SerializeField] float _jumpPower;
     Rigidbody2D _rb2d;
     bool _isGround;
     [SerializeField] float _maxLife;
     [SerializeField] float _life;
+    public float _HP;
     int _count;
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,7 @@ public class PlayerManager : MonoBehaviour
         {
             _moveSpeed = _maxSpeed;
         }
+        _speed = _moveSpeed;
     }
     void Jump()
     {
@@ -59,6 +62,7 @@ public class PlayerManager : MonoBehaviour
         {
             _life += recovery;
         }
+        _HP = _life;
     }
 
     public void Damage(float damage)
