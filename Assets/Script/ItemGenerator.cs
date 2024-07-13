@@ -9,6 +9,7 @@ public class ItemGenerator : MonoBehaviour
     [SerializeField] GameObject[] _randomItem;
     [SerializeField] float _randomIntervalPlayerTransform;
     [SerializeField] float _intervalTime;
+    [SerializeField] float _endPos;
     float _timer;
     int _randomSpawnIndex;
     int _randomItemIndex;
@@ -30,7 +31,7 @@ public class ItemGenerator : MonoBehaviour
         _timer += Time.deltaTime;
         if (_playerTransform != null)
         {
-            if (_randomIntervalPlayerTransform <= _playerTransform.position.x && _timer >= _intervalTime)
+            if (_randomIntervalPlayerTransform <= _playerTransform.position.x && _timer >= _intervalTime && transform.position.x <= _endPos)
             {
                 _randomSpawnIndex = Random.Range(0, _randomPosY.Length);
                 _spawnPos.x = transform.position.x;
