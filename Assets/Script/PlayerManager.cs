@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] float _moveSpeed;
-    public float _speed;
+    public float _moveSpeed;
     [SerializeField] float _maxSpeed;
+    [SerializeField] float _minSpeed;
     [SerializeField] float _jumpPower;
     Rigidbody2D _rb2d;
     bool _isGround;
     [SerializeField] float _maxLife;
-    [SerializeField] float _life;
-    public float _HP;
+    public float _life;
     int _count;
+    [SerializeField] Animator _anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
     {
         _moveSpeed += speed;
         transform.position += transform.right * _moveSpeed  * Time.deltaTime;
-        if (_moveSpeed <= 0)
+        if (_moveSpeed <= _minSpeed)
         {
             Destroy(gameObject);
         }
@@ -42,13 +42,13 @@ public class PlayerManager : MonoBehaviour
         {
             _moveSpeed = _maxSpeed;
         }
-        _speed = _moveSpeed;
     }
     void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && _isGround)
         {
             _rb2d.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
+            _anim.Play("JumpAnim");
         }
         if (Input.GetKeyDown(KeyCode.Return) && _count < 1)
         {
@@ -62,7 +62,6 @@ public class PlayerManager : MonoBehaviour
         {
             _life += recovery;
         }
-        _HP = _life;
     }
 
     public void Damage(float damage)

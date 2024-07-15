@@ -5,21 +5,38 @@ using UnityEngine;
 
 public abstract class ItemManager : MonoBehaviour
 {
+    [SerializeField] ItemType _itemtype;
+    enum ItemType
+    {
+        item,
+        goal
+    }
+
     public abstract void Activate();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (_itemtype == ItemType.item)
         {
-            Activate();
-            Destroy(gameObject);
+            if (collision.gameObject.tag == "Player")
+            {
+                Activate();
+                Destroy(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (_itemtype == ItemType.goal)
         {
-            Activate();
+            if (collision.gameObject.tag == "Player")
+            {
+                Activate();
+            }
         }
     }
 

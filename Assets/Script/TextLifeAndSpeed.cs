@@ -21,7 +21,7 @@ public class TextLifeAndSpeed : MonoBehaviour
     }
     void Text()
     {
-        _lifeText.text = $"残りHP:{_player._HP.ToString()}";
-        _speedText.text = $"現在のスピード:{_player._speed.ToString("F2")}km";
+        _lifeText.text = $"残りHP:{_player._life.ToString()}";
+        _speedText.text = $"現在のスピード:{_player._moveSpeed.ToString("F2")}km";
     }
 }

@@ -7,15 +7,16 @@ using UnityEngine.UIElements;
 
 public class DistanceManager : MonoBehaviour
 {
-    [SerializeField] GameObject _goalObject;
-    [SerializeField] GameObject _playerObject;
+    GameObject _goalObject;
+    GameObject _playerObject;
     float _distance;
     static float _dis;
     [SerializeField] Text _distanceText;
     // Start is called before the first frame update
     void Start()
     {
-
+        _playerObject = GameObject.Find("Player");
+        _goalObject = GameObject.Find("END");
     }
 
     // Update is called once per frame
