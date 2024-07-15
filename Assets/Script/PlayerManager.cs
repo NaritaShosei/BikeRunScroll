@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour
     public void Move(float speed)
     {
         _moveSpeed += speed;
-        transform.position += transform.right * _moveSpeed  * Time.deltaTime;
+        transform.position += transform.right * _moveSpeed * Time.deltaTime;
         if (_moveSpeed <= _minSpeed)
         {
             Destroy(gameObject);
@@ -48,7 +48,10 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _isGround)
         {
             _rb2d.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
-            _anim.Play("JumpAnim");
+            if (_anim)
+            {
+                _anim.Play("JumpAnim");
+            }
         }
         if (Input.GetKeyDown(KeyCode.Return) && _count < 1)
         {
@@ -65,8 +68,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void Damage(float damage)
-    { 
-            _life -= damage;
+    {
+        _life -= damage;
         if (_life <= 0)
         {
             Destroy(gameObject);
