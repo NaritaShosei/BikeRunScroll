@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public float _moveSpeed;
+    [SerializeField] float _moveSpeed;
+    public static float _staticSpeed;
     [SerializeField] float _maxSpeed;
     [SerializeField] float _minSpeed;
     [SerializeField] float _jumpPower;
     Rigidbody2D _rb2d;
     bool _isGround;
     [SerializeField] float _maxLife;
-    public float _life;
+    [SerializeField] float _life;
+    public static float _staticLife;
     int _count;
     [SerializeField] Animator _anim;
+    [SerializeField] string _sceneName;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +39,13 @@ public class PlayerManager : MonoBehaviour
         transform.position += transform.right * _moveSpeed * Time.deltaTime;
         if (_moveSpeed <= _minSpeed)
         {
-            Destroy(gameObject);
+            GameOver();
         }
         if (_moveSpeed >= _maxSpeed)
         {
             _moveSpeed = _maxSpeed;
         }
+        _moveSpeed = _staticSpeed;
     }
     void Jump()
     {
@@ -65,6 +69,7 @@ public class PlayerManager : MonoBehaviour
         {
             _life += recovery;
         }
+        _life = _staticLife;
     }
 
     public void Damage(float damage)
@@ -72,8 +77,12 @@ public class PlayerManager : MonoBehaviour
         _life -= damage;
         if (_life <= 0)
         {
-            Destroy(gameObject);
+            GameOver();
         }
+    }
+    void GameOver()
+    {
+        SceneChangeManager.SceneChange(_sceneName);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

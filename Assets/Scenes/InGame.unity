@@ -1282,6 +1282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lifeText: {fileID: 381719215}
   _speedText: {fileID: 895293211}
+  _gameMode: 0
 --- !u!4 &1753635986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8725562676198891126, guid: 5e1bc8411dd8a17459dac290a449bcca, type: 3}
@@ -1581,7 +1582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemtype: 1
-  _sceneName: Title
+  _sceneName: Result
 --- !u!1 &2106006557
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,6 +1842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5906591403183853186, guid: 5e1bc8411dd8a17459dac290a449bcca, type: 3}
+      propertyPath: _sceneName
+      value: Result
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1851,6 +1856,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 8654919367674009888}
   - {fileID: 1974117165}
   - {fileID: 1509861299}
   - {fileID: 1419402277}
@@ -1859,4 +1865,3 @@ SceneRoots:
   - {fileID: 1668293804}
   - {fileID: 2029343715}
   - {fileID: 2111461982}
-  - {fileID: 8654919367674009888}

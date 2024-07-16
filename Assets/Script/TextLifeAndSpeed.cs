@@ -5,13 +5,29 @@ using UnityEngine.UI;
 
 public class TextLifeAndSpeed : MonoBehaviour
 {
-    PlayerManager _player;
     [SerializeField] Text _lifeText;
     [SerializeField] Text _speedText;
+    [SerializeField] GameMode _gameMode;
+    enum GameMode
+    {
+        ingame,
+        result
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        _player = GameObject.Find("Player").GetComponent<PlayerManager>();
+        switch (_gameMode)
+        {
+            case GameMode.ingame:
+
+                break;
+            case GameMode.result:
+                _speedText.text = $"スピード{PlayerManager._staticSpeed.ToString("F2")}kmでクリア";
+                _lifeText.text = $"残りHP{PlayerManager._staticLife.ToString()}でクリア";
+                break;
+
+        }
     }
 
     // Update is called once per frame
@@ -21,7 +37,10 @@ public class TextLifeAndSpeed : MonoBehaviour
     }
     void Text()
     {
-        _lifeText.text = $"残りHP:{_player._life.ToString()}";
-        _speedText.text = $"現在のスピード:{_player._moveSpeed.ToString("F2")}km";
+        if (_gameMode == GameMode.ingame)
+        {
+            _speedText.text = $"現在のスピード:{PlayerManager._staticSpeed.ToString("F2")}km";
+            _lifeText.text = $"残りHP:{PlayerManager._staticLife.ToString()}";
+        }
     }
 }
