@@ -61,6 +61,10 @@ public class PlayerManager : MonoBehaviour
         {
             _rb2d.AddForce(Vector2.down * _jumpPower, ForceMode2D.Impulse);
             _count++;
+            if (_anim)
+            {
+                _anim.Play("JumpDownAnim");
+            }
         }
     }
     public void Recovery(float recovery)
