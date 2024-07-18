@@ -5,9 +5,11 @@ using UnityEngine;
 public class SpeedUpItem : ItemManager
 {
     [SerializeField] float _speedUp;
+    [SerializeField] float _spawnDisUp;
     public override void Activate()
     {
         FindObjectOfType<PlayerManager>().Move(_speedUp);
+        FindObjectOfType<ItemGenerator>().Spawn(_spawnDisUp);
     }
     // Start is called before the first frame update
     void Start()

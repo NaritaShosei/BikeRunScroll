@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
         {
             _moveSpeed = _maxSpeed;
         }
-        _moveSpeed = _staticSpeed;
+        _staticSpeed = _moveSpeed;
     }
     void Jump()
     {
@@ -69,7 +69,7 @@ public class PlayerManager : MonoBehaviour
         {
             _life += recovery;
         }
-        _life = _staticLife;
+        _staticLife = _life;
     }
 
     public void Damage(float damage)

@@ -5,9 +5,11 @@ using UnityEngine;
 public class SpeedDownItem : ItemManager
 {
     [SerializeField] float _speedDown;
+    [SerializeField] float _spawnDisDown;
     public override void Activate()
     {
         FindObjectOfType<PlayerManager>().Move(-_speedDown);
+        FindObjectOfType<ItemGenerator>().Spawn(-_spawnDisDown);
     }
     // Start is called before the first frame update
     void Start()
