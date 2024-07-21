@@ -17,10 +17,12 @@ public class PlayerManager : MonoBehaviour
     int _count;
     [SerializeField] Animator _anim;
     [SerializeField] string _sceneName;
+    public static bool _gameOver;
     // Start is called before the first frame update
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
+        _gameOver = false;
     }
 
     // Update is called once per frame
@@ -86,6 +88,7 @@ public class PlayerManager : MonoBehaviour
     }
     void GameOver()
     {
+        _gameOver = true;
         SceneChangeManager.SceneChange(_sceneName);
     }
     private void OnCollisionEnter2D(Collision2D collision)

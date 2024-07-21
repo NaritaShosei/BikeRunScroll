@@ -7,6 +7,7 @@ public class TextLifeAndSpeed : MonoBehaviour
 {
     [SerializeField] Text _lifeText;
     [SerializeField] Text _speedText;
+    [SerializeField] Text _gameOverText;
     [SerializeField] GameMode _gameMode;
     enum GameMode
     {
@@ -23,8 +24,15 @@ public class TextLifeAndSpeed : MonoBehaviour
 
                 break;
             case GameMode.result:
-                _speedText.text = $"スピード{PlayerManager._staticSpeed.ToString("F2")}kmでクリア";
-                _lifeText.text = $"残りHP{PlayerManager._staticLife.ToString()}でクリア";
+                if (PlayerManager._gameOver)
+                {
+                    _gameOverText.text = "ゲームオーバー";
+                }
+                else
+                {
+                    _speedText.text = $"スピード{PlayerManager._staticSpeed.ToString("F2")}kmでクリア";
+                    _lifeText.text = $"残りHP{PlayerManager._staticLife.ToString()}でクリア";
+                }
                 break;
 
         }

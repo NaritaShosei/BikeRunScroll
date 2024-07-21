@@ -7,8 +7,10 @@ public class ItemGenerator : MonoBehaviour
     [SerializeField] Vector2 _spawnPos;
     [SerializeField] float[] _randomPosY;
     [SerializeField] GameObject[] _randomItem;
-    [SerializeField] float _randomSpawnIntervalPlayerTransform;
+    [SerializeField] float _defaultSpawnInterval = 5;
+    float _spawnInterval;
     [SerializeField] float _endPos;
+    float _spawnIntervalChange;
     int _randomSpawnIndex;
     int _randomItemIndex;
     Transform _playerTransform;
@@ -16,6 +18,7 @@ public class ItemGenerator : MonoBehaviour
     void Start()
     {
         _playerTransform = GameObject.Find("Player").transform;
+        _spawnInterval = _defaultSpawnInterval;
     }
 
     // Update is called once per frame
@@ -26,17 +29,21 @@ public class ItemGenerator : MonoBehaviour
 
     public void Spawn(float pos)
     {
-        _randomSpawnIntervalPlayerTransform += pos;
+        _spawnIntervalChange += pos;
         if (_playerTransform != null)
         {
-            if (_randomSpawnIntervalPlayerTransform <= _playerTransform.position.x && transform.position.x <= _endPos)
+            if (_spawnInterval <= _playerTransform.position.x && transform.position.x <= _endPos)
             {
                 _randomSpawnIndex = Random.Range(0, _randomPosY.Length);
                 _spawnPos.x = transform.position.x;
                 _spawnPos.y = _randomPosY[_randomSpawnIndex];
                 _randomItemIndex = Random.Range(0, _randomItem.Length);
                 Instantiate(_randomItem[_randomItemIndex], _spawnPos, Quaternion.identity);
-                _randomSpawnIntervalPlayerTransform += 5;
+                _spawnInterval += 5 + _spawnIntervalChange;
+                if (_spawnInterval <= _defaultSpawnInterval)
+                {
+                    _spawnInterval = _defaultSpawnInterval;
+                }
             }
         }
     }
