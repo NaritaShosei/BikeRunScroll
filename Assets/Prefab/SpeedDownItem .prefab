@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemtype: 0
   _speedDown: 2
-  _spawnDisDown: 2
+  _spawnDisDown: 1.5
 --- !u!61 &8843730412963784590
 BoxCollider2D:
   m_ObjectHideFlags: 0
