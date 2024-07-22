@@ -41,6 +41,7 @@ public class PlayerManager : MonoBehaviour
         transform.position += transform.right * _moveSpeed * Time.deltaTime;
         if (_moveSpeed <= _minSpeed)
         {
+            _moveSpeed = 0;
             GameOver();
         }
         if (_moveSpeed >= _maxSpeed)
@@ -59,7 +60,7 @@ public class PlayerManager : MonoBehaviour
                 _anim.Play("JumpAnim");
             }
         }
-        if (Input.GetKeyDown(KeyCode.Return) && _count < 1)
+        if (Input.GetKeyDown(KeyCode.Return) && _count < 1 && !_isGround)
         {
             _rb2d.AddForce(Vector2.down * _jumpPower, ForceMode2D.Impulse);
             _count++;
