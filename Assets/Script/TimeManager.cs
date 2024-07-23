@@ -22,6 +22,6 @@ public class TimeManager : MonoBehaviour
     void Timer()
     {
         _timer += Time.deltaTime;
-        _timerText.text = $"Œo‰ßŽžŠÔ{_timer.ToString("F2")}•b";
+        _timerText.text = $"Œo‰ßŽžŠÔ:{_timer.ToString("00.00")}•b";
     }
 }

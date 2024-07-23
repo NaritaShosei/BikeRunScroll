@@ -32,7 +32,7 @@ public class DistanceManager : MonoBehaviour
         {
             _distance = Vector2.Distance(_playerObject.transform.position, _goalObject.transform.position);
             _dis = _distance;
-            _distanceText.text = $"ÉSÅ[ÉãÇ‹Ç≈Ç†Ç∆{_dis.ToString("F1")}m";
+            _distanceText.text = $"ÉSÅ[ÉãÇ‹Ç≈Ç†Ç∆:{_dis.ToString("000.0")}m";
         }
         if (!_playerObject)
         {

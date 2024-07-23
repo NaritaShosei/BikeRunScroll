@@ -32,7 +32,7 @@ public class TextLifeAndSpeed : MonoBehaviour
                 }
                 else
                 {
-                    _speedText.text = $"スピード{PlayerManager._staticSpeed.ToString("F2")}kmでクリア";
+                    _speedText.text = $"スピード{PlayerManager._staticSpeed.ToString("00.00")}kmでクリア";
                     _lifeText.text = $"残りHP{PlayerManager._staticLife.ToString()}でクリア";
                     Destroy(_gameOverText);
                 }
@@ -50,7 +50,7 @@ public class TextLifeAndSpeed : MonoBehaviour
     {
         if (_gameMode == GameMode.ingame)
         {
-            _speedText.text = $"現在のスピード:{PlayerManager._staticSpeed.ToString("F2")}km";
+            _speedText.text = $"現在のスピード:{PlayerManager._staticSpeed.ToString("00.00")}km";
             _lifeText.text = $"残りHP:{PlayerManager._staticLife.ToString()}";
         }
     }

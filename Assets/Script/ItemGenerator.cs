@@ -40,6 +40,7 @@ public class ItemGenerator : MonoBehaviour
                 _randomItemIndex = Random.Range(0, _randomItem.Length);
                 Instantiate(_randomItem[_randomItemIndex], _spawnPos, Quaternion.identity);
                 _spawnInterval += 5 + _spawnIntervalChange;
+                _defaultSpawnInterval += 5;
                 if (_spawnInterval <= _defaultSpawnInterval)
                 {
                     _spawnInterval = _defaultSpawnInterval;
