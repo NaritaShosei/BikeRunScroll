@@ -12,6 +12,8 @@ public class DistanceManager : MonoBehaviour
     float _distance;
     static float _dis;
     [SerializeField] Text _distanceText;
+    [SerializeField] string _sceneName;
+    [SerializeField] float _invokeTime = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +34,14 @@ public class DistanceManager : MonoBehaviour
             _dis = _distance;
             _distanceText.text = $"ÉSÅ[ÉãÇ‹Ç≈Ç†Ç∆{_dis.ToString("F1")}m";
         }
+        if (!_playerObject)
+        {
+            StartCoroutine(GetScene());
+        }
+    }
+    IEnumerator GetScene()
+    {
+        yield return new WaitForSeconds(_invokeTime);
+        SceneChangeManager.SceneChange(_sceneName);
     }
 }

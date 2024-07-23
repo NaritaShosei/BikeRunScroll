@@ -18,6 +18,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Animator _anim;
     [SerializeField] string _sceneName;
     public static bool _gameOver;
+    [SerializeField] float _invokeTime = 1;
+    [SerializeField] GameObject _gameOverEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,8 @@ public class PlayerManager : MonoBehaviour
         {
             _moveSpeed = 0;
             GameOver();
+            Instantiate(_gameOverEffect,transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
         if (_moveSpeed >= _maxSpeed)
         {
@@ -85,12 +89,13 @@ public class PlayerManager : MonoBehaviour
         if (_life <= 0)
         {
             GameOver();
+            Instantiate(_gameOverEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
     void GameOver()
     {
         _gameOver = true;
-        SceneChangeManager.SceneChange(_sceneName);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

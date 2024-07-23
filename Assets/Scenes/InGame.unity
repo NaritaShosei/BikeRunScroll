@@ -1385,6 +1385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _distanceText: {fileID: 540418008}
+  _sceneName: Result
+  _invokeTime: 1
 --- !u!4 &1668293804
 Transform:
   m_ObjectHideFlags: 0
@@ -1841,10 +1843,6 @@ PrefabInstance:
     - target: {fileID: 2127731377266645689, guid: 5e1bc8411dd8a17459dac290a449bcca, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5906591403183853186, guid: 5e1bc8411dd8a17459dac290a449bcca, type: 3}
-      propertyPath: _sceneName
-      value: Result
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

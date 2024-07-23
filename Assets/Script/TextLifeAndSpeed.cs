@@ -27,11 +27,14 @@ public class TextLifeAndSpeed : MonoBehaviour
                 if (PlayerManager._gameOver)
                 {
                     _gameOverText.text = "ゲームオーバー";
+                    Destroy(_lifeText);
+                    Destroy(_speedText);
                 }
                 else
                 {
                     _speedText.text = $"スピード{PlayerManager._staticSpeed.ToString("F2")}kmでクリア";
                     _lifeText.text = $"残りHP{PlayerManager._staticLife.ToString()}でクリア";
+                    Destroy(_gameOverText);
                 }
                 break;
 

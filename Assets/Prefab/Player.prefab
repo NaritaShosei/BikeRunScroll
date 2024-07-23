@@ -138,6 +138,9 @@ MonoBehaviour:
   _maxLife: 5
   _life: 5
   _anim: {fileID: 4052285402125970181}
+  _sceneName: Result
+  _invokeTime: 1
+  _gameOverEffect: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!50 &2805538348888314958
 Rigidbody2D:
   serializedVersion: 4
