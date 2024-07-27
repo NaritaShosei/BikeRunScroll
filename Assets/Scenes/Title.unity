@@ -407,6 +407,8 @@ GameObject:
   - component: {fileID: 1238912462}
   - component: {fileID: 1238912465}
   - component: {fileID: 1238912464}
+  - component: {fileID: 1238912466}
+  - component: {fileID: 1238912467}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -466,7 +468,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: MASKED RIDER RUN
+  m_Text: RIDER BIKE RUN
 --- !u!222 &1238912463
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -505,6 +507,47 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!95 &1238912466
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238912460}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1502bc280acad342877f3fb5f61f56f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1238912467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238912460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d6b2c24049f54c42947a6c9b166e613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _anim: {fileID: 1238912466}
+  _waitTime:
+  - 5
+  - 2.5
+  - 3
+  - 4
+  - 1.5
+  _animName: Blinking
 --- !u!1 &1458262959
 GameObject:
   m_ObjectHideFlags: 0
