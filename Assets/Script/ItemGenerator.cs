@@ -14,38 +14,37 @@ public class ItemGenerator : MonoBehaviour
     int _randomSpawnIndex;
     int _randomItemIndex;
     Transform _playerTransform;
+    [SerializeField] float _waitTime;
     // Start is called before the first frame update
     void Start()
     {
         _playerTransform = GameObject.Find("Player").transform;
         _spawnInterval = _defaultSpawnInterval;
+        StartCoroutine(StartSpawn(0));
     }
 
     // Update is called once per frame
     void Update()
     {
-        Spawn(0);
-    }
 
-    public void Spawn(float pos)
+    }
+    public void Spawn()
     {
-        _spawnIntervalChange += pos;
-        if (_playerTransform != null)
+        if (_playerTransform)
         {
-            if (_spawnInterval <= _playerTransform.position.x && transform.position.x <= _endPos)
-            {
-                _randomSpawnIndex = Random.Range(0, _randomPosY.Length);
-                _spawnPos.x = transform.position.x;
-                _spawnPos.y = _randomPosY[_randomSpawnIndex];
-                _randomItemIndex = Random.Range(0, _randomItem.Length);
-                Instantiate(_randomItem[_randomItemIndex], _spawnPos, Quaternion.identity);
-                _spawnInterval += 5 + _spawnIntervalChange;
-                _defaultSpawnInterval += 5;
-                if (_spawnInterval <= _defaultSpawnInterval)
-                {
-                    _spawnInterval = _defaultSpawnInterval;
-                }
-            }
+            _randomSpawnIndex = Random.Range(0, _randomPosY.Length);
+            _spawnPos.x = transform.position.x;
+            _spawnPos.y = _randomPosY[_randomSpawnIndex];
+            _randomItemIndex = Random.Range(0, _randomItem.Length);
+            Instantiate(_randomItem[_randomItemIndex], _spawnPos, Quaternion.identity);
         }
+    }
+    public IEnumerator StartSpawn(float pos)
+    {
+        var time = pos;
+        var waitTime = _waitTime + time;
+        yield return new WaitForSeconds(waitTime);
+        Spawn();
+        StartCoroutine(StartSpawn(0));
     }
 }

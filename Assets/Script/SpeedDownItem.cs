@@ -9,7 +9,7 @@ public class SpeedDownItem : ItemManager
     public override void Activate()
     {
         FindObjectOfType<PlayerManager>().Move(-_speedDown);
-        FindObjectOfType<ItemGenerator>().Spawn(-_spawnDisDown);
+        FindObjectOfType<ItemGenerator>().StartSpawn(-_spawnDisDown);
     }
     // Start is called before the first frame update
     void Start()
