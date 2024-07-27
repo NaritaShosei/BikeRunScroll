@@ -30,7 +30,7 @@ public class ItemGenerator : MonoBehaviour
     }
     public void Spawn()
     {
-        if (_playerTransform)
+        if (_playerTransform && transform.position.x <= 650)
         {
             _randomSpawnIndex = Random.Range(0, _randomPosY.Length);
             _spawnPos.x = transform.position.x;

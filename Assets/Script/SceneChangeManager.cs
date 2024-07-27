@@ -6,17 +6,17 @@ public class SceneChangeManager : MonoBehaviour
 {
     [SerializeField] string _sceneName;
     [SerializeField] float _waitTime;
-    Coroutine _coroutine;
+    [SerializeField] AudioSource _audio;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public static void SceneChange(string sceneName)
     {
@@ -24,6 +24,10 @@ public class SceneChangeManager : MonoBehaviour
     }
     public void GetScene()
     {
+        if (_audio)
+        {
+            _audio.Play();
+        }
         StartCoroutine(StartSceneChange());
     }
 
