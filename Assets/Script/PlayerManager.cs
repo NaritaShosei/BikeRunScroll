@@ -56,9 +56,10 @@ public class PlayerManager : MonoBehaviour
     }
     void Jump()
     {
+        Vector2 velocity = _rb2d.velocity;
         if (Input.GetKeyDown(KeyCode.Space) && _isGround)
         {
-            _rb2d.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
+            velocity.y = _jumpPower;
             if (_anim)
             {
                 _anim.Play("JumpAnim");
@@ -66,13 +67,14 @@ public class PlayerManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Return) && _count < 1 && !_isGround)
         {
-            _rb2d.AddForce(Vector2.down * _jumpPower, ForceMode2D.Impulse);
+            velocity.y = -_jumpPower;
             _count++;
             if (_anim)
             {
                 _anim.Play("JumpDownAnim");
             }
         }
+        _rb2d.velocity = velocity;
     }
     public void Recovery(float recovery)
     {
